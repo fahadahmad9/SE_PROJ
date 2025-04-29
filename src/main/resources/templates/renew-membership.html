@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Renew Membership</title>
+</head>
+<body>
+<h2>Renew Your Membership</h2>
+<form action="/user/renew-membership" method="post">
+  <input type="hidden" name="userId" value="1" /> <!-- Replace with dynamic session userId -->
+
+  <label for="membershipType">Choose Membership:</label>
+  <select name="newMembershipType" id="membershipType">
+    <option value="GOLD">Gold</option>
+    <option value="BASIC">Basic</option>
+    <option value="PREMIUM">Premium</option>
+    <option value="TRIAL">Trial</option>
+  </select>
+
+  <button type="submit">Renew Membership</button>
+</form>
+
+<a href="/user/user-dashboard">Back to Dashboard</a>
+</body>
+</html>

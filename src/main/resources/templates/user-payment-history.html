@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Payment History</title>
+</head>
+<body>
+<h2>Payment History</h2>
+
+<div th:if="${payments.empty}">
+    <p>No payment history.</p>
+</div>
+
+<table th:if="${!payments.empty}" border="1">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Payment Method</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="payment : ${payments}">
+        <td th:text="${payment.paymentDate}"></td>
+        <td th:text="${payment.amount}"></td>
+        <td th:text="${payment.paymentMethod}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/user-dashboard">Back to Dashboard</a>
+</body>
+</html>

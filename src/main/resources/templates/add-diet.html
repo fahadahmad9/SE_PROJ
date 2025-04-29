@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Diet Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function fillDietFields(selectObj) {
+            const dietNameInput = document.getElementById("diet-name");
+            const dietDescInput = document.getElementById("diet-description");
+
+            const selectedValue = selectObj.value;
+
+            if (selectedValue === "Keto") {
+                dietNameInput.value = "Keto";
+                dietDescInput.value = "High-fat, low-carb diet that promotes ketosis.";
+            } else if (selectedValue === "Vegan") {
+                dietNameInput.value = "Vegan";
+                dietDescInput.value = "Plant-based diet excluding all animal products.";
+            } else if (selectedValue === "Mediterranean") {
+                dietNameInput.value = "Mediterranean";
+                dietDescInput.value = "Diet rich in fruits, vegetables, fish, and olive oil.";
+            } else {
+                dietNameInput.value = "";
+                dietDescInput.value = "";
+            }
+        }
+    </script>
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h1 class="text-center mb-4">Add New Diet Plan</h1>
+
+    <form class="col-md-6 mx-auto" method="post" action="/user/save-dietplan">
+        <div class="mb-3">
+            <label class="form-label">Select Predefined Diet Plan (Optional)</label>
+            <select class="form-select" onchange="fillDietFields(this)">
+                <option value="">-- Choose a predefined plan (or write your own below) --</option>
+                <option value="Keto">Keto Diet</option>
+                <option value="Vegan">Vegan Diet</option>
+                <option value="Mediterranean">Mediterranean Diet</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Diet Name</label>
+            <input type="text" id="diet-name" name="name" class="form-control" placeholder="Enter Diet Name">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea id="diet-description" name="description" class="form-control" rows="4" placeholder="Enter Diet Description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Save Diet Plan</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <a href="/user/diets" class="btn btn-primary">Back to Diets</a>
+    </div>
+</div>
+</body>
+</html>

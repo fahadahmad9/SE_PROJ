@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Book Trainer Session</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+<h2>Book a Trainer Session</h2>
+<form th:action="@{/user/save-trainersession}" th:object="${trainerSession}" method="post" class="mt-4">
+
+  <!-- Dropdown for selecting trainer -->
+  <div class="mb-3">
+    <label>Select Trainer</label>
+    <select th:field="*{trainerId}" class="form-control" required>
+      <option value="" disabled selected>Select a Trainer</option>
+      <option value="1">John Doe - Weightlifting</option>
+      <option value="2">Jane Smith - Cardio</option>
+      <option value="3">Michael Brown - Yoga</option>
+    </select>
+  </div>
+
+  <!-- Dropdown for selecting time slot -->
+  <div class="mb-3">
+    <label>Select Time Slot</label>
+    <select th:field="*{timeSlot}" class="form-control" required>
+      <option value="" disabled selected>Select a Time Slot</option>
+      <option value="9:00 AM">9:00 AM</option>
+      <option value="10:00 AM">10:00 AM</option>
+      <option value="11:00 AM">11:00 AM</option>
+      <option value="12:00 PM">12:00 PM</option>
+      <option value="1:00 PM">1:00 PM</option>
+      <option value="2:00 PM">2:00 PM</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success">Book Session</button>
+  <a href="/user/trainers" class="btn btn-secondary">Cancel</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .dashboard-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .dashboard-buttons a {
+      display: inline-block;
+      padding: 15px 25px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .dashboard-buttons a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Welcome to Your Dashboard!</h1>
+
+<div class="dashboard-buttons">
+  <a href="/user/workouts">Manage Workouts</a>
+  <a href="/user/diets">Manage Diets</a>
+  <a href="/user/payment-history">View Payment History</a>
+  <a href="/user/trainers">View Trainers</a>
+  <p>Membership Type: <span th:text="${user.membershipType != null ? user.membershipType : 'Not Available'}"></span></p>
+  <p>Start Date: <span th:text="${user.membershipStartDate != null ? user.membershipStartDate : 'Not Available'}"></span></p>
+  <p>End Date: <span th:text="${user.membershipEndDate != null ? user.membershipEndDate : 'Not Available'}"></span></p>
+
+  <h2>Personalized Workout Plans</h2>
+  <div th:each="plan : ${workoutPlans}">
+    <p th:text="${plan.name}"></p>
+  </div>
+
+  <h2>Personalized Diet Plans</h2>
+  <div th:each="plan : ${dietPlans}">
+    <p th:text="${plan.name}"></p>
+  </div>
+
+</div>
+
+</body>
+</html>

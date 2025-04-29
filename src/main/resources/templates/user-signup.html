@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        form {
+            max-width: 500px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .message {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Signup</h1>
+
+<form action="/user/signup" method="POST">
+    <label for="name">Name:</label><br>
+    <input type="text" name="name" id="name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email" required><br>
+
+    <label for="phone">Phone:</label><br>
+    <input type="text" name="phone" id="phone" required><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" id="password" required><br>
+
+    <label for="securityQuestion">Security Question:</label><br>
+    <input type="text" name="securityQuestion" id="securityQuestion" required><br>
+
+    <label for="securityAnswer">Answer to Security Question:</label><br>
+    <input type="text" name="securityAnswer" id="securityAnswer" required><br>
+
+    <button type="submit">Register</button>
+
+    <div class="text-center mt-3">
+        <a href="/user/backtoUser" class="btn btn-link">Back to Home</a>
+    </div>
+</form>
+
+<div th:if="${message}" class="message">
+    <p th:text="${message}"></p>
+</div>
+
+<div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>

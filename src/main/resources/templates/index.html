@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #688faa; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #c5d5df; /* Light color for the box */
+            padding: 80px 100px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 40px;
+            color: #1d2b64;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        a.btn {
+            display: inline-block;
+            font-size: 18px;
+            padding: 12px 30px;
+            margin: 10px;
+            text-decoration: none;
+            background-color: #1d2b64;
+            color: white;
+            border-radius: 15px;
+            transition: 0.3s ease;
+        }
+
+        a.btn:hover {
+            background-color: #0b163f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Gym Management System</h1>
+    <p>Choose your role:</p>
+    <a th:href="@{/admin-page}" class="btn">Admin Page</a>
+    <a th:href="@{/user-page}" class="btn">User Page</a>
+</div>
+</body>
+</html>

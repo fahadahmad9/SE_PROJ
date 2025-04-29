@@ -1,0 +1,26 @@
+<h2>Available Trainer Slots</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Day</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="slot : ${schedules}">
+    <td th:text="${slot.dayOfWeek}"></td>
+    <td th:text="${slot.startTime}"></td>
+    <td th:text="${slot.endTime}"></td>
+    <td>
+      <form action="/user/book-schedule" method="post">
+        <input type="hidden" name="userId" value="1" /> <!-- Replace 1 with session user id later -->
+        <input type="hidden" th:name="scheduleId" th:value="${slot.id}" />
+        <button type="submit">Book Slot</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>

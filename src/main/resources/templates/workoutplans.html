@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workout Plans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+<h2>Workout Plans</h2>
+<a class="btn btn-primary mb-3" href="/admin/workoutplan/add">Add New Workout Plan</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Plan Name</th>
+        <th>Description</th>
+        <th>Price (if any)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="workoutPlan : ${workoutPlans}">
+        <td th:text="${workoutPlan.name}">Plan Name</td>
+        <td th:text="${workoutPlan.description}">Description</td>
+        <td th:text="${workoutPlan.price}">Price</td>
+        <td>
+            <a th:href="@{'/admin/workoutplan/edit/' + ${workoutPlan.id}}" class="btn btn-warning btn-sm">Edit</a>
+            <a th:href="@{'/admin/workoutplan/delete/' + ${workoutPlan.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

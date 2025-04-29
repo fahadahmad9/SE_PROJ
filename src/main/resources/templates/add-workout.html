@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Workout Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function fillWorkoutDetails() {
+            const bodyType = document.getElementById("bodyType").value;
+            const nameField = document.getElementById("name");
+            const descField = document.getElementById("description");
+
+            const plans = {
+                "ectomorph": {
+                    name: "Muscle Gain Plan",
+                    desc: "High calorie, compound lifts, low cardio. Focus on progressive overload and strength training 4-5 times a week."
+                },
+                "mesomorph": {
+                    name: "Balanced Fitness Plan",
+                    desc: "Balanced mix of strength training and cardio. 3-4 full-body workouts per week and moderate calorie diet."
+                },
+                "endomorph": {
+                    name: "Fat Loss Plan",
+                    desc: "High intensity interval training (HIIT), low-carb diet, and resistance training. Cardio 5 times a week."
+                }
+            };
+
+            if (plans[bodyType]) {
+                nameField.value = plans[bodyType].name;
+                descField.value = plans[bodyType].desc;
+            } else {
+                nameField.value = "";
+                descField.value = "";
+            }
+        }
+    </script>
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h1 class="text-center mb-4">Add New Workout Plan</h1>
+
+    <form action="/user/save-workout" method="post" class="col-md-6 mx-auto">
+        <div class="mb-3">
+            <label for="bodyType" class="form-label">Select Body Type</label>
+            <select id="bodyType" class="form-select" onchange="fillWorkoutDetails()">
+                <option value="">-- Select Body Type --</option>
+                <option value="ectomorph">Ectomorph (Slim)</option>
+                <option value="mesomorph">Mesomorph (Athletic)</option>
+                <option value="endomorph">Endomorph (Bulkier)</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Workout Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Workout Name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Enter Workout Description" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Save Workout Plan</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>
